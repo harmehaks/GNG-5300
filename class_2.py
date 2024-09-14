@@ -86,4 +86,89 @@ print_grades(students_grades, "Frank")
 print_grades(students_grades, "Bob")
 print(students_grades)
 
+
+# Define the repository URL and the file path
+repo_url = "https://github.com/harmehaks/GNG-5300"
+file_path = "/c:/Users/harme/Desktop/class 2.py"
+
+# Commands to add, commit, and push the file to the repository
+commands = [
+    ["git", "init"],
+    ["git", "remote", "add", "origin", repo_url],
+    ["git", "add", "."],
+    ["git", "commit", "-m", "Add class 2.py file"],
+    ["git", "branch", "-M", "main"],
+    ["git", "push", "-u", "origin", "main"]
+]
+
+# Execute the commands
+for command in commands:
+    subprocess.run(command)
+
+# Demonstrating the difference between local and global variables
+
+# Global variable
+global_var = "I am a global variable"
+
+def my_function():
+    # Local variable
+    local_var = "I am a local variable"
+        
+    # Accessing the global variable inside the function
+    print(global_var)
+        
+    # Accessing the local variable inside the function
+    print(local_var)
+
+# Calling the function
+my_function()
+
+# Accessing the global variable outside the function
+print(global_var)
+
+# Trying to access the local variable outside the function will raise an error
+try:
+    print(local_var)
+except NameError as e:
+    print(e)
 '''
+
+class StudentGrades:
+    def __init__(self):
+        self.students_grades = {
+                "Alice": [85],
+                "Bob": [92],
+                "Charlie": [78],
+                "David": [90],
+                "Eva": [88]
+        }
+
+    def add_student(self, new_student):
+        if new_student not in self.students_grades:
+            self.students_grades[new_student] = []
+        else:
+            print(f"Student {new_student} already exists.")
+
+    def print_grades(self, student_name):
+        if student_name in self.students_grades:
+            print(f"Grades for {student_name}: {self.students_grades[student_name]}")
+        else:
+            print(f"Student {student_name} not found.")
+
+    def add_grades(self, student_name, new_grades):
+        if student_name in self.students_grades:
+            self.students_grades[student_name].extend(new_grades)
+        else:
+            print(f"Student {student_name} not found.")
+
+# Example usage
+student_grades = StudentGrades()
+student_grades.add_student("Frank")
+student_grades.add_grades("Frank", [75, 80, 85])
+student_grades.add_grades("Frank", [92])
+student_grades.print_grades("Frank")
+student_grades.print_grades("Bob")
+print(student_grades.students_grades)
+
+
+
